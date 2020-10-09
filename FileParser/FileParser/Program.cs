@@ -57,6 +57,13 @@ namespace FileParser
             var parser = new Parser();
             foreach (var file in files)
             {
+                if(new FileInfo(file).Length == 0)
+                {
+                    Console.WriteLine($"Error! The file '{Path.GetFileName(file)}' is empty");
+                    return;
+
+                }
+
                 parser.ValidateFile(fileExt, file, pathString, numFields);
             }
         }
